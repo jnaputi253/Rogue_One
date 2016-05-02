@@ -2,6 +2,10 @@
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
+	public int playerFoodPoints = 100;
+
+	[HideInInspector]
+	public bool playersTurn = true;
 	public BoardManager boardScript;
 	public static GameManager instance = null;
 	private int level = 3;
@@ -16,6 +20,10 @@ public class GameManager : MonoBehaviour {
 		DontDestroyOnLoad (gameObject);
 		boardScript = GetComponent<BoardManager> ();
 		InitGame ();
+	}
+
+	public void GameOver() {
+		enabled = false;
 	}
 
 	void InitGame() {
